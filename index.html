@@ -1,650 +1,748 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vance Nelson — Portfolio</title>
-  <meta name="description" content="Personal cybersecurity portfolio for Vance Nelson." />
-  <style>
-    :root {
-      --bg: #08090b;
-      --bg-soft: #0e1014;
-      --panel: rgba(255, 255, 255, 0.04);
-      --panel-border: rgba(255, 255, 255, 0.09);
-      --text: #f3f5f7;
-      --muted: rgba(243, 245, 247, 0.72);
-      --faint: rgba(243, 245, 247, 0.48);
-      --accent: #9ca8b7;
-      --accent-2: #d9dedf;
-      --shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
-      --max: 1120px;
-      --radius-xl: 28px;
-      --radius-lg: 22px;
-      --radius-md: 16px;
-    }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vance Nelson</title>
+    <meta
+      name="description"
+      content="A calm, atmospheric cybersecurity portfolio and professional identity site."
+    />
+    <style>
+      :root {
+        --bg: #07080a;
+        --bg-soft: rgba(12, 14, 18, 0.76);
+        --panel: rgba(14, 16, 20, 0.74);
+        --panel-strong: rgba(10, 12, 16, 0.9);
+        --text: rgba(248, 248, 250, 0.96);
+        --muted: rgba(248, 248, 250, 0.70);
+        --line: rgba(255, 255, 255, 0.10);
+        --shadow: 0 22px 60px rgba(0, 0, 0, 0.40);
+        --radius: 28px;
+        --max: 1120px;
+      }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #151922 0%, var(--bg) 55%);
-      color: var(--text);
-      overflow-x: hidden;
-    }
+      * {
+        box-sizing: border-box;
+      }
 
-    a { color: inherit; text-decoration: none; }
-    .wrap { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; }
+      html {
+        scroll-behavior: smooth;
+        background: var(--bg);
+      }
 
-    .topbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 40;
-      backdrop-filter: blur(18px);
-      background: linear-gradient(to bottom, rgba(8, 9, 11, 0.82), rgba(8, 9, 11, 0.28));
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .topbar-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 0;
-      gap: 16px;
-    }
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      letter-spacing: 0.02em;
-      font-weight: 700;
-    }
-    .brand-mark {
-      width: 11px;
-      height: 11px;
-      border-radius: 999px;
-      background: linear-gradient(135deg, #ffffff, #96a0ae);
-      box-shadow: 0 0 0 8px rgba(255,255,255,0.05);
-    }
-    .nav {
-      display: flex;
-      gap: 20px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-    .nav a:hover { color: var(--text); }
+      body {
+        margin: 0;
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        color: var(--text);
+        background:
+          radial-gradient(circle at top, rgba(255, 255, 255, 0.03), transparent 30%),
+          linear-gradient(180deg, #101317 0%, #07080a 56%, #050607 100%);
+        overflow-x: hidden;
+      }
 
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      padding-top: 74px;
-      isolation: isolate;
-      overflow: clip;
-    }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
 
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(circle at 20% 15%, rgba(255,255,255,0.22), transparent 26%),
-        radial-gradient(circle at 85% 18%, rgba(255,255,255,0.12), transparent 20%),
-        linear-gradient(to bottom, rgba(255,255,255,0.92), rgba(255,255,255,0.75) 18%, rgba(255,255,255,0.08) 100%);
-      z-index: -2;
-    }
+      img {
+        display: block;
+        max-width: 100%;
+      }
 
-    .mist {
-      position: absolute;
-      inset: auto 0 0;
-      height: 36vh;
-      background:
-        linear-gradient(to top, rgba(8,9,11,0.95), rgba(8,9,11,0.65), transparent),
-        radial-gradient(circle at 20% 25%, rgba(255,255,255,0.20), transparent 35%),
-        radial-gradient(circle at 50% 10%, rgba(255,255,255,0.12), transparent 34%),
-        radial-gradient(circle at 80% 28%, rgba(255,255,255,0.18), transparent 36%);
-      filter: blur(14px);
-      opacity: 0.9;
-      z-index: -1;
-      transform: translateY(40px);
-    }
+      .noise {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        opacity: 0.05;
+        mix-blend-mode: soft-light;
+        background-image:
+          linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px);
+        background-size: 3px 3px;
+        z-index: 4;
+      }
 
-    .mountain-scene {
-      position: absolute;
-      inset: 0;
-      z-index: -1;
-      display: grid;
-      place-items: end center;
-      pointer-events: none;
-    }
+      .nav {
+        position: fixed;
+        inset: 0 0 auto 0;
+        z-index: 20;
+        padding: 18px 24px;
+        transition: background 240ms ease, backdrop-filter 240ms ease, border-color 240ms ease;
+      }
 
-    .mountain-svg {
-      width: min(1500px, 130vw);
-      height: auto;
-      transform: translateY(6vh);
-      filter: drop-shadow(0 30px 40px rgba(0,0,0,0.28));
-      opacity: 0.98;
-    }
+      .nav-inner {
+        max-width: var(--max);
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 18px;
+        border-radius: 999px;
+        border: 1px solid transparent;
+      }
 
-    .hero-content {
-      width: min(920px, calc(100% - 40px));
-      padding: 80px 0 120px;
-      display: grid;
-      gap: 20px;
-      align-items: end;
-      text-align: left;
-    }
+      .nav.scrolled .nav-inner {
+        background: rgba(8, 10, 13, 0.72);
+        backdrop-filter: blur(18px);
+        border-color: rgba(255, 255, 255, 0.08);
+        box-shadow: 0 12px 38px rgba(0, 0, 0, 0.26);
+      }
 
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      width: fit-content;
-      padding: 10px 14px;
-      border: 1px solid rgba(255,255,255,0.16);
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      color: rgba(28, 32, 38, 0.86);
-      font-size: 13px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      box-shadow: 0 12px 30px rgba(255,255,255,0.12);
-      backdrop-filter: blur(8px);
-    }
+      .brand {
+        font-size: 0.92rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
 
-    .title {
-      margin: 0;
-      color: #13161b;
-      font-size: clamp(3rem, 6vw, 6.2rem);
-      line-height: 0.92;
-      letter-spacing: -0.06em;
-      font-weight: 800;
-      max-width: 12ch;
-      text-wrap: balance;
-      text-shadow: 0 1px 0 rgba(255,255,255,0.5);
-    }
+      .nav-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 18px;
+      }
 
-    .subtitle {
-      margin: 0;
-      max-width: 52ch;
-      color: rgba(17, 20, 24, 0.78);
-      font-size: clamp(1.05rem, 2vw, 1.2rem);
-      line-height: 1.7;
-      text-shadow: 0 1px 0 rgba(255,255,255,0.55);
-    }
+      .nav-links a {
+        font-size: 0.88rem;
+        color: var(--muted);
+      }
 
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 10px;
-    }
+      .nav-links a:hover {
+        color: var(--text);
+      }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 14px 18px;
-      border-radius: 999px;
-      border: 1px solid rgba(17, 20, 24, 0.14);
-      background: rgba(17, 20, 24, 0.06);
-      color: #13161b;
-      font-weight: 650;
-      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
-      backdrop-filter: blur(10px);
-    }
-    .btn:hover { transform: translateY(-1px); background: rgba(17,20,24,0.11); border-color: rgba(17,20,24,0.22); }
-    .btn.primary {
-      background: #111318;
-      color: #f5f7fa;
-      border-color: rgba(255,255,255,0.08);
-      box-shadow: 0 18px 45px rgba(0,0,0,0.22);
-    }
+      .hero {
+        position: relative;
+        min-height: 100svh;
+        display: grid;
+        align-items: end;
+        padding: 112px 24px 44px;
+        overflow: hidden;
+        isolation: isolate;
+      }
 
-    .scroll-hint {
-      margin-top: 18px;
-      color: rgba(17, 20, 24, 0.55);
-      font-size: 13px;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
+      .hero-media {
+        position: absolute;
+        inset: 0;
+        z-index: 0;
+      }
 
-    .content {
-      position: relative;
-      background:
-        linear-gradient(to bottom, rgba(8,9,11,0) 0%, rgba(8,9,11,0.85) 6%, rgba(8,9,11,1) 16%),
-        radial-gradient(circle at top, rgba(25, 29, 38, 0.95), rgba(8, 9, 11, 1) 70%);
-      padding: 0 0 88px;
-    }
+      .hero-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 38%;
+        filter: grayscale(100%) contrast(1.1) brightness(0.82);
+        transform: scale(1.02);
+      }
 
-    .section {
-      padding: 80px 0 0;
-    }
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          linear-gradient(180deg, rgba(5, 6, 8, 0.10) 0%, rgba(5, 6, 8, 0.28) 35%, rgba(5, 6, 8, 0.76) 100%),
+          radial-gradient(circle at 50% 24%, rgba(255, 255, 255, 0.08), transparent 35%);
+        z-index: 1;
+      }
 
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: end;
-      gap: 24px;
-      margin-bottom: 24px;
-    }
-    .section-kicker {
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      font-size: 12px;
-      font-weight: 700;
-    }
-    .section-title {
-      margin: 10px 0 0;
-      font-size: clamp(1.7rem, 3vw, 2.5rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-    }
-    .section-desc {
-      max-width: 58ch;
-      color: var(--muted);
-      line-height: 1.7;
-      margin: 0;
-    }
+      .hero-content {
+        position: relative;
+        z-index: 2;
+        width: min(var(--max), 100%);
+        margin: 0 auto;
+      }
 
-    .grid {
-      display: grid;
-      gap: 18px;
-    }
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 18px;
+        font-size: 0.78rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.72);
+      }
 
-    .about-grid {
-      grid-template-columns: repeat(12, 1fr);
-      align-items: stretch;
-    }
+      .eyebrow::before {
+        content: "";
+        width: 32px;
+        height: 1px;
+        background: rgba(255, 255, 255, 0.42);
+      }
 
-    .card {
-      background: linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.03));
-      border: 1px solid var(--panel-border);
-      border-radius: var(--radius-xl);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      overflow: hidden;
-    }
+      h1 {
+        margin: 0;
+        max-width: 9ch;
+        font-size: clamp(3.2rem, 8vw, 6.4rem);
+        line-height: 0.94;
+        letter-spacing: -0.06em;
+      }
 
-    .about-main {
-      grid-column: span 7;
-      padding: 28px;
-    }
-    .about-side {
-      grid-column: span 5;
-      padding: 28px;
-      display: grid;
-      gap: 16px;
-    }
+      .lede {
+        margin: 22px 0 0;
+        max-width: 44rem;
+        font-size: clamp(1.02rem, 1.5vw, 1.22rem);
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.76);
+      }
 
-    .bio {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--text);
-      margin: 0;
-    }
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 30px;
+      }
 
-    .stats {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-    .stat {
-      padding: 16px;
-      border-radius: var(--radius-md);
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.06);
-    }
-    .stat strong {
-      display: block;
-      font-size: 1.3rem;
-      letter-spacing: -0.03em;
-      margin-bottom: 4px;
-    }
-    .stat span {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.5;
-    }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 48px;
+        padding: 0 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        backdrop-filter: blur(12px);
+        transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+      }
 
-    .chips {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 18px;
-    }
-    .chip {
-      padding: 10px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.03);
-      color: var(--muted);
-      font-size: 13px;
-    }
+      .button:hover {
+        transform: translateY(-1px);
+        background: rgba(255, 255, 255, 0.10);
+        border-color: rgba(255, 255, 255, 0.24);
+      }
 
-    .projects-grid {
-      grid-template-columns: repeat(12, 1fr);
-    }
-    .project {
-      grid-column: span 4;
-      padding: 24px;
-      display: grid;
-      gap: 14px;
-      min-height: 270px;
-    }
-    .project h3 {
-      margin: 0;
-      font-size: 1.18rem;
-      letter-spacing: -0.03em;
-    }
-    .project p {
-      margin: 0;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-    .meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: auto;
-    }
-    .tag {
-      display: inline-flex;
-      align-items: center;
-      padding: 8px 10px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.04);
-      color: var(--accent-2);
-      border: 1px solid rgba(255,255,255,0.07);
-      font-size: 12px;
-    }
+      .button.primary {
+        background: rgba(255, 255, 255, 0.92);
+        color: #090b0e;
+      }
 
-    .quote {
-      padding: 32px;
-      display: grid;
-      gap: 10px;
-      background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.07), transparent 40%),
-        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-    }
-    .quote p {
-      margin: 0;
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: var(--text);
-      max-width: 65ch;
-    }
-    .quote span {
-      color: var(--faint);
-      font-size: 13px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
+      .button.primary:hover {
+        background: #ffffff;
+      }
 
-    .footer {
-      padding: 58px 0 40px;
-      color: var(--faint);
-      font-size: 14px;
-    }
-    .footer-inner {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 18px;
-      display: flex;
-      justify-content: space-between;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
+      .scroll-indicator {
+        position: absolute;
+        left: 50%;
+        bottom: 18px;
+        transform: translateX(-50%);
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        color: rgba(255, 255, 255, 0.66);
+        font-size: 0.74rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
 
-    .fade-in {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 700ms ease, transform 700ms ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+      .scroll-indicator .line {
+        width: 1px;
+        height: 38px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.7), transparent);
+        animation: pulse 1.8s ease-in-out infinite;
+      }
 
-    @media (max-width: 900px) {
-      .nav { display: none; }
-      .hero-content { padding-top: 42px; padding-bottom: 90px; }
-      .title { max-width: 100%; }
-      .about-main, .about-side, .project { grid-column: span 12; }
-      .section-head { flex-direction: column; align-items: start; }
-    }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.45; transform: translateY(0); }
+        50% { opacity: 1; transform: translateY(4px); }
+      }
 
-    @media (max-width: 640px) {
-      .wrap { width: min(var(--max), calc(100% - 28px)); }
-      .hero { min-height: 92vh; }
-      .title { font-size: clamp(2.6rem, 14vw, 4.1rem); }
-      .subtitle { font-size: 1rem; }
-      .hero-actions { flex-direction: column; align-items: stretch; }
-      .btn { justify-content: center; }
-      .stats { grid-template-columns: 1fr; }
-      .card, .project, .quote { border-radius: 22px; }
-    }
-  </style>
-</head>
-<body>
-  <header class="topbar">
-    <div class="wrap topbar-inner">
-      <a class="brand" href="#top" aria-label="Vance Nelson home">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span>Vance Nelson</span>
-      </a>
-      <nav class="nav" aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#philosophy">Philosophy</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
+      .section {
+        padding: 92px 24px;
+      }
 
-  <main id="top">
-    <section class="hero">
-      <div class="mountain-scene" aria-hidden="true">
-        <svg class="mountain-svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Stylized mountain scene">
-          <defs>
-            <linearGradient id="sky" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stop-color="#ffffff" stop-opacity="1" />
-              <stop offset="44%" stop-color="#f2f3f4" stop-opacity="0.88" />
-              <stop offset="100%" stop-color="#0a0b0d" stop-opacity="1" />
-            </linearGradient>
-            <linearGradient id="rock" x1="0" x2="0" y1="0" y2="1">
-              <stop offset="0%" stop-color="#6f7072" />
-              <stop offset="35%" stop-color="#34373a" />
-              <stop offset="100%" stop-color="#111214" />
-            </linearGradient>
-            <linearGradient id="snow" x1="0" x2="1" y1="0" y2="1">
-              <stop offset="0%" stop-color="#f7f7f6" />
-              <stop offset="100%" stop-color="#b5b8ba" />
-            </linearGradient>
-            <filter id="blur"><feGaussianBlur stdDeviation="16" /></filter>
-          </defs>
+      .section-inner {
+        width: min(var(--max), 100%);
+        margin: 0 auto;
+      }
 
-          <rect width="1600" height="900" fill="url(#sky)" />
+      .section-title {
+        display: flex;
+        align-items: baseline;
+        gap: 16px;
+        margin-bottom: 28px;
+      }
 
-          <g opacity="0.75" filter="url(#blur)">
-            <ellipse cx="400" cy="530" rx="250" ry="90" fill="#ffffff" opacity="0.55" />
-            <ellipse cx="860" cy="500" rx="360" ry="110" fill="#ffffff" opacity="0.48" />
-            <ellipse cx="1270" cy="570" rx="280" ry="92" fill="#ffffff" opacity="0.4" />
-          </g>
+      .section-title h2 {
+        margin: 0;
+        font-size: clamp(1.8rem, 3vw, 2.8rem);
+        letter-spacing: -0.04em;
+      }
 
-          <path d="M0 900 L0 645 L135 640 L210 580 L285 620 L390 450 L500 550 L610 360 L700 470 L795 300 L910 425 L1040 270 L1140 405 L1275 320 L1388 455 L1490 390 L1600 440 L1600 900 Z" fill="#1f2124" opacity="0.88" />
-          <path d="M0 900 L0 700 L105 690 L175 620 L260 665 L350 535 L455 620 L540 470 L640 590 L730 405 L810 500 L920 350 L1005 490 L1130 330 L1240 470 L1345 365 L1450 510 L1600 460 L1600 900 Z" fill="url(#rock)" />
+      .section-title span {
+        font-size: 0.78rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
 
-          <path d="M220 610 L350 470 L430 540 L498 430 L610 320 L700 425 L770 300 L845 390 L935 280 L1010 360 L1105 250 L1195 390 L1260 320 L1345 430 L1210 720 L450 720 Z" fill="#15171a" opacity="0.98" />
-          <path d="M350 470 L430 540 L498 430 L540 455 L470 625 L345 600 Z" fill="url(#snow)" opacity="0.9" />
-          <path d="M700 425 L770 300 L845 390 L800 445 L724 455 Z" fill="url(#snow)" opacity="0.82" />
-          <path d="M935 280 L1010 360 L980 400 L900 365 Z" fill="url(#snow)" opacity="0.76" />
-          <path d="M1105 250 L1195 390 L1160 430 L1088 392 Z" fill="url(#snow)" opacity="0.72" />
+      .panel {
+        background: var(--panel);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(16px);
+      }
 
-          <path d="M170 900 L210 730 L245 780 L290 705 L332 820 L380 750 L430 900 Z" fill="#0d0f11" />
-          <path d="M1110 900 L1168 760 L1210 820 L1260 720 L1310 840 L1360 780 L1410 900 Z" fill="#0d0f11" />
-          <path d="M1340 900 L1370 790 L1400 840 L1430 780 L1470 900 Z" fill="#0d0f11" opacity="0.85" />
-          <path d="M80 900 L110 800 L140 845 L170 770 L210 900 Z" fill="#0d0f11" opacity="0.8" />
+      .intro-grid,
+      .experience-grid,
+      .footer-grid {
+        display: grid;
+        gap: 24px;
+      }
 
-          <path d="M0 900 L0 825 C150 800, 310 790, 470 810 C610 828, 770 820, 920 794 C1090 766, 1250 770, 1600 830 L1600 900 Z" fill="#08090b" />
-        </svg>
+      .intro-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+        align-items: start;
+      }
+
+      .card {
+        padding: 28px;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.85;
+        font-size: 1.02rem;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .stat {
+        padding: 20px;
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.18rem;
+        letter-spacing: -0.03em;
+      }
+
+      .stat span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        line-height: 1.5;
+        font-size: 0.92rem;
+      }
+
+      .experience-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .experience-item {
+        padding: 24px;
+        border-radius: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .experience-item h3 {
+        margin: 0 0 10px;
+        font-size: 1.05rem;
+      }
+
+      .experience-item p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.75;
+        font-size: 0.96rem;
+      }
+
+      .project-grid {
+        display: grid;
+        gap: 24px;
+        grid-template-columns: 1.1fr 0.9fr;
+      }
+
+      .project-feature {
+        overflow: hidden;
+      }
+
+      .project-image {
+        position: relative;
+        aspect-ratio: 16 / 10;
+        overflow: hidden;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+        background: #0d1014;
+      }
+
+      .project-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center 38%;
+        filter: grayscale(100%) contrast(1.12) brightness(0.88);
+        transform: scale(1.02);
+      }
+
+      .project-body {
+        padding: 28px;
+      }
+
+      .project-body h3 {
+        margin: 0 0 12px;
+        font-size: 1.35rem;
+        letter-spacing: -0.03em;
+      }
+
+      .project-body p {
+        margin: 0 0 18px;
+        color: var(--muted);
+        line-height: 1.82;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 36px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.10);
+        background: rgba(255, 255, 255, 0.03);
+        color: rgba(255, 255, 255, 0.84);
+        font-size: 0.88rem;
+      }
+
+      .project-notes {
+        display: grid;
+        gap: 14px;
+      }
+
+      .note {
+        padding: 22px;
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .note h4 {
+        margin: 0 0 10px;
+        font-size: 1rem;
+      }
+
+      .note p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.7;
+        font-size: 0.96rem;
+      }
+
+      .contact .panel {
+        padding: 28px;
+      }
+
+      .contact p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.8;
+        font-size: 1.01rem;
+      }
+
+      .contact a {
+        color: rgba(255,255,255,0.92);
+      }
+
+      footer {
+        padding: 0 24px 36px;
+      }
+
+      .footer-inner {
+        width: min(var(--max), 100%);
+        margin: 0 auto;
+        padding-top: 28px;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr auto;
+        align-items: center;
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 800ms ease, transform 800ms ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 960px) {
+        .intro-grid,
+        .project-grid,
+        .experience-grid,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .nav {
+          padding: 14px 14px;
+        }
+
+        .nav-inner {
+          padding: 12px 14px;
+        }
+
+        .nav-links {
+          gap: 12px;
+        }
+
+        .hero {
+          padding: 96px 18px 40px;
+        }
+
+        .hero-media img,
+        .project-image img {
+          object-position: center 28%;
+        }
+
+        .section {
+          padding: 74px 18px;
+        }
+
+        .card,
+        .project-body,
+        .contact .panel,
+        .experience-item {
+          padding: 22px;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="noise"></div>
+
+    <header class="nav" id="nav">
+      <div class="nav-inner">
+        <div class="brand">Vance Nelson</div>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="#about">About</a>
+          <a href="#experience">Experience</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
       </div>
+    </header>
 
-      <div class="wrap hero-content">
-        <div class="eyebrow fade-in">Misty peaks • disciplined climb</div>
-        <div>
-          <h1 class="title fade-in">Vance Nelson</h1>
-          <p class="subtitle fade-in">Security practitioner with hands-on SOC experience, a background in regulated enterprise operations, and a mindset built around finding signal in the noise.</p>
+    <main>
+      <section class="hero">
+        <div class="hero-media">
+          <img
+            src="assets/mountain-hero.jpg"
+            alt="A crisp black and white mountain face with heavy contrast and a sense of solitude"
+          />
         </div>
-        <div class="hero-actions fade-in">
-          <a class="btn primary" href="#work">View Investigations</a>
-          <a class="btn" href="#about">About Me</a>
-        </div>
-        <div class="scroll-hint fade-in">Scroll to enter the dark mode layout</div>
-      </div>
-      <div class="mist" aria-hidden="true"></div>
-    </section>
 
-    <section class="content">
-      <div class="wrap">
-        <section id="about" class="section fade-in">
-          <div class="section-head">
-            <div>
-              <div class="section-kicker">About</div>
-              <h2 class="section-title">A clear thinker in noisy environments.</h2>
-            </div>
-            <p class="section-desc">This section is designed to read like a strong Graham Helton-style introduction: concise, confident, and proof-driven.</p>
+        <div class="hero-content fade-in visible">
+          <div class="eyebrow">Cybersecurity • Systems Thinking • Enterprise Operations</div>
+          <h1>Vance Nelson</h1>
+          <p class="lede">
+            I use this space to document lessons, projects, and ideas from my growth in cybersecurity — with a focus on calm execution, clear thinking, and real operational depth.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#projects">Explore Projects</a>
+            <a class="button" href="#about">Read More</a>
           </div>
+        </div>
 
-          <div class="grid about-grid">
-            <article class="card about-main">
-              <p class="bio">I’m drawn to work that requires patience, clarity, and disciplined investigation. In security, that means separating signal from noise, understanding the context behind an alert, and documenting what matters with precision. Outside of cybersecurity, mountains symbolize that same climb: effort, perspective, and persistence.</p>
-              <div class="chips" aria-label="Key skills">
-                <span class="chip">Incident Response</span>
-                <span class="chip">Threat Investigation</span>
-                <span class="chip">SOC Operations</span>
-                <span class="chip">Splunk</span>
-                <span class="chip">CrowdStrike</span>
-                <span class="chip">Proofpoint</span>
-                <span class="chip">ServiceNow</span>
-                <span class="chip">VirusTotal</span>
-              </div>
-            </article>
+        <div class="scroll-indicator" aria-hidden="true">
+          <div class="line"></div>
+          <span>Scroll</span>
+        </div>
+      </section>
 
-            <aside class="card about-side">
+      <section class="section" id="about">
+        <div class="section-inner fade-in">
+          <div class="section-title">
+            <h2>About</h2>
+            <span>Identity / background</span>
+          </div>
+          <div class="intro-grid">
+            <div class="panel card">
+              <p>
+                I come from an enterprise operations mindset and have grown into cybersecurity through hands-on exposure to alert triage, phishing analysis, endpoint investigation, incident coordination, and the day-to-day reality of working inside a security operations environment. My approach is calm, practical, and systems-oriented: understand the context, identify what matters, and communicate clearly.
+                <br /><br />
+                The mountain imagery is not decoration. It reflects how I think about growth — discipline, endurance, perspective, and steady progress under pressure.
+              </p>
+            </div>
+            <div class="panel card">
               <div class="stats">
-                <div class="stat"><strong>M.S.</strong><span>Cybersecurity & Information Assurance</span></div>
-                <div class="stat"><strong>CySA+ / PenTest+</strong><span>Analytical + offensive foundation</span></div>
-                <div class="stat"><strong>100+</strong><span>Phishing, spam, and fraud alerts triaged</span></div>
-                <div class="stat"><strong>Fortune 500</strong><span>Live SOC environment experience</span></div>
+                <div class="stat">
+                  <strong>Enterprise SOC</strong>
+                  <span>Alert triage, phishing review, endpoint investigations, escalation support.</span>
+                </div>
+                <div class="stat">
+                  <strong>Systems Thinking</strong>
+                  <span>Looking for patterns across people, processes, and technology.</span>
+                </div>
+                <div class="stat">
+                  <strong>Calm Under Pressure</strong>
+                  <span>Measured decision-making in operational environments.</span>
+                </div>
+                <div class="stat">
+                  <strong>Communication</strong>
+                  <span>Clear updates, stakeholder coordination, concise technical writing.</span>
+                </div>
               </div>
-              <div class="stat">
-                <strong>Current role</strong>
-                <span>Project Manager in a regulated enterprise environment — valuable for ownership, documentation, coordination, and stakeholder management.</span>
-              </div>
-            </aside>
-          </div>
-        </section>
-
-        <section id="work" class="section fade-in">
-          <div class="section-head">
-            <div>
-              <div class="section-kicker">Featured work</div>
-              <h2 class="section-title">Investigations and projects.</h2>
             </div>
-            <p class="section-desc">Use these cards as placeholders for case studies, walkthroughs, labs, and writeups.</p>
           </div>
+        </div>
+      </section>
 
-          <div class="grid projects-grid">
-            <article class="card project">
-              <h3>Phishing Campaign Analysis</h3>
-              <p>Walk through header analysis, URL inspection, enrichment, and disposition. Show how you decide whether the email is a harmless nuisance or a real credential harvest attempt.</p>
-              <div class="meta">
-                <span class="tag">Proofpoint</span>
-                <span class="tag">VirusTotal</span>
-                <span class="tag">Email Security</span>
+      <section class="section" id="experience">
+        <div class="section-inner fade-in">
+          <div class="section-title">
+            <h2>Experience</h2>
+            <span>Operational credibility</span>
+          </div>
+          <div class="experience-grid">
+            <article class="experience-item panel">
+              <h3>Security Operations</h3>
+              <p>
+                Supported alert handling and investigation workflows across phishing, endpoint, cloud, and operational escalations.
+              </p>
+            </article>
+            <article class="experience-item panel">
+              <h3>Coordination</h3>
+              <p>
+                Comfortable moving between technical analysis and professional communication when multiple people and priorities are involved.
+              </p>
+            </article>
+            <article class="experience-item panel">
+              <h3>Analysis</h3>
+              <p>
+                Focused on patterns, context, and root-cause thinking rather than surface-level symptoms.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-inner fade-in">
+          <div class="section-title">
+            <h2>Projects / Research</h2>
+            <span>Curated work</span>
+          </div>
+          <div class="project-grid">
+            <article class="panel project-feature">
+              <div class="project-image">
+                <img
+                  src="assets/mountain-hero.jpg"
+                  alt="The same stark mountain image used as a featured visual, cropped for a content section"
+                />
+              </div>
+              <div class="project-body">
+                <h3>Advanced Windows Process Tree Visualization</h3>
+                <p>
+                  A visual and analytical exploration of process chains in Windows investigations. The goal is to map suspicious parent-child relationships, highlight tradecraft patterns, and make endpoint reasoning easier to read at a glance.
+                </p>
+                <div class="tag-row">
+                  <span class="tag">Process Trees</span>
+                  <span class="tag">LOLBins</span>
+                  <span class="tag">PowerShell</span>
+                  <span class="tag">Office Chains</span>
+                  <span class="tag">Endpoint Analysis</span>
+                </div>
               </div>
             </article>
 
-            <article class="card project">
-              <h3>Authentication Anomaly Review</h3>
-              <p>Explain a suspicious login or impossible-travel scenario, the telemetry you reviewed, and how you validated whether the alert represented real compromise or expected user activity.</p>
-              <div class="meta">
-                <span class="tag">Splunk</span>
-                <span class="tag">Azure AD</span>
-                <span class="tag">Triage</span>
+            <div class="project-notes">
+              <div class="note panel">
+                <h4>Detection Notes</h4>
+                <p>Short writeups on patterns, false positives, and what makes an alert worth deeper investigation.</p>
               </div>
-            </article>
-
-            <article class="card project">
-              <h3>Endpoint Detection Deep Dive</h3>
-              <p>Document how you trace an endpoint alert from initial detection through process tree analysis, parent-child relationships, and the final decision to escalate or close.</p>
-              <div class="meta">
-                <span class="tag">CrowdStrike</span>
-                <span class="tag">EDR</span>
-                <span class="tag">Incident Response</span>
+              <div class="note panel">
+                <h4>Operational Lessons</h4>
+                <p>Observed lessons from SOC work, documentation habits, and escalation coordination.</p>
               </div>
-            </article>
-          </div>
-        </section>
-
-        <section id="philosophy" class="section fade-in">
-          <div class="card quote">
-            <span>Meaning</span>
-            <p>Mountains matter to me because they represent the climb: faith, endurance, perspective, and the willingness to keep going when the route is steep or obscured. That same mindset shapes how I approach security work — steady, disciplined, and focused on finding clarity through uncertainty.</p>
-          </div>
-        </section>
-
-        <section id="contact" class="section fade-in">
-          <div class="section-head">
-            <div>
-              <div class="section-kicker">Contact</div>
-              <h2 class="section-title">Make it easy to reach you.</h2>
+              <div class="note panel">
+                <h4>Workflow Thinking</h4>
+                <p>How investigation process can be improved with better context, cleaner reasoning, and better visuals.</p>
+              </div>
             </div>
-            <p class="section-desc">Replace these with your real links once you are ready to publish.</p>
           </div>
+        </div>
+      </section>
 
-          <div class="grid about-grid">
-            <article class="card about-main">
-              <p class="bio">Email: vancemnelson1@gmail.com<br />LinkedIn: linkedin.com/in/vancenelson<br />Resume: PDF download</p>
-            </article>
-            <aside class="card about-side">
-              <div class="stat">
-                <strong>Next step</strong>
-                <span>Add two case studies, a resume button, and a simple blog index. That will make the site feel real immediately.</span>
-              </div>
-            </aside>
+      <section class="section" id="contact">
+        <div class="section-inner fade-in contact">
+          <div class="section-title">
+            <h2>Contact</h2>
+            <span>Minimal and direct</span>
           </div>
-        </section>
+          <div class="panel">
+            <p>
+              For professional inquiries, reach out at <a href="mailto:hello@vance-nelson.com">hello@vance-nelson.com</a>.
+              <br />
+              Connect on <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a> or add your resume link here when ready.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
 
-        <footer class="footer">
-          <div class="footer-inner">
-            <span>© Vance Nelson</span>
-            <span>Built for GitHub Pages</span>
-          </div>
-        </footer>
+    <footer>
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div>© <span id="year"></span> Vance Nelson</div>
+          <div>Calm • disciplined • intentional</div>
+        </div>
       </div>
-    </section>
-  </main>
+    </footer>
 
-  <script>
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.12 });
+    <script>
+      const nav = document.getElementById('nav');
+      const year = document.getElementById('year');
+      year.textContent = new Date().getFullYear();
 
-    document.querySelectorAll('.fade-in').forEach((el) => io.observe(el));
+      const updateNav = () => {
+        nav.classList.toggle('scrolled', window.scrollY > 8);
+      };
+      updateNav();
+      window.addEventListener('scroll', updateNav, { passive: true });
 
-    // Lightweight parallax for the mountain hero.
-    const mountain = document.querySelector('.mountain-svg');
-    window.addEventListener('scroll', () => {
-      const y = window.scrollY * 0.08;
-      mountain.style.transform = `translateY(calc(6vh + ${y}px))`;
-    }, { passive: true });
-  </script>
-</body>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) entry.target.classList.add('visible');
+          }
+        },
+        { threshold: 0.12 }
+      );
+
+      document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
+    </script>
+  </body>
 </html>
