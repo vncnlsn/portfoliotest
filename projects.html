@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Vance Nelson</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <span class="nav__logo">vance<span>.</span>nelson</span>
+      <div class="nav__divider"></div>
+      <ul class="nav__links">
+        <li><a href="index.html">Index</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="investigations.html">Investigations</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="services.html">Services</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="site-main">
+    <div class="container">
+      <div class="stub-hero">
+        <p class="stub-hero__label">Projects</p>
+        <h1 class="stub-hero__title">What I build.</h1>
+        <p class="stub-hero__body">
+          Technical tools, simulations, and visualizations built to deepen 
+          understanding through construction. Starting with an interactive 
+          Windows process tree investigation environment.
+        </p>
+      </div>
+
+      <section class="section">
+        <p class="section__label">In Development</p>
+        <div class="featured__card reveal">
+          <p class="featured__type">Visualization / Endpoint Forensics</p>
+          <h2 class="featured__title">Windows Process Tree Investigation Environment</h2>
+          <p class="featured__body">
+            An interactive investigation tool modeled after CrowdStrike Falcon's process tree. 
+            Simulates realistic execution chains including LOLBIN abuse, PowerShell anomalies, 
+            Office macro launches, and malicious parent-child relationships — 
+            with analyst annotations, alert overlays, and timeline visualization.
+          </p>
+          <span class="featured__link" style="cursor:default;opacity:0.5;">
+            In Progress <span>·</span>
+          </span>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="display:flex;justify-content:space-between;width:100%;max-width:var(--max-w);">
+      <span class="footer__copy">© 2025 Vance Nelson</span>
+      <span class="footer__tag">vance-nelson.com</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Persistent Contact Bar -->
+  <div class="contact-bar" role="complementary" aria-label="Contact">
+    <a href="mailto:vancemnelson1@gmail.com" class="contact-bar__item">
+      <span class="contact-bar__item__label">Email</span>
+      <span>vancemnelson1@gmail.com</span>
+    </a>
+    <div class="contact-bar__divider"></div>
+    <a href="tel:4358810952" class="contact-bar__item">
+      <span class="contact-bar__item__label">Phone</span>
+      <span>435-881-0952</span>
+    </a>
+    <div class="contact-bar__divider"></div>
+    <a href="https://linkedin.com/in/vancenelson" target="_blank" rel="noopener" class="contact-bar__item">
+      <span class="contact-bar__item__label">LinkedIn</span>
+      <span>linkedin.com/in/vancenelson</span>
+    </a>
+  </div>
+</body>
+</html>

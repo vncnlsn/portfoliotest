@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Vance Nelson</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <style>
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--accent-line);
+      border: 1px solid var(--accent-line);
+      margin-top: 0;
+    }
+    .service-item {
+      background: var(--bg-mid);
+      padding: 36px 32px;
+    }
+    .service-item__num {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+    .service-item__title {
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--text-accent);
+      margin-bottom: 10px;
+    }
+    .service-item__desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    @media (max-width: 700px) {
+      .services-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" role="navigation" aria-label="Primary">
+    <div class="nav__inner">
+      <span class="nav__logo">vance<span>.</span>nelson</span>
+      <div class="nav__divider"></div>
+      <ul class="nav__links">
+        <li><a href="index.html">Index</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="investigations.html">Investigations</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="services.html">Services</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="site-main">
+    <div class="container">
+      <div class="stub-hero">
+        <p class="stub-hero__label">Services</p>
+        <h1 class="stub-hero__title">Practical guidance.<br>No guru energy.</h1>
+        <p class="stub-hero__body">
+          Career-focused services for people entering or growing within cybersecurity. 
+          Grounded in real enterprise experience and honest assessment.
+        </p>
+      </div>
+
+      <section class="section">
+        <p class="section__label">Offerings</p>
+        <div class="services-grid">
+          <div class="service-item reveal">
+            <p class="service-item__num">01</p>
+            <p class="service-item__title">Resume Review</p>
+            <p class="service-item__desc">
+              Targeted feedback on cybersecurity and IT resumes. Clarity, 
+              signal density, and positioning for SOC and analyst roles.
+            </p>
+          </div>
+          <div class="service-item reveal">
+            <p class="service-item__num">02</p>
+            <p class="service-item__title">LinkedIn Optimization</p>
+            <p class="service-item__desc">
+              Profile audit and rewrite guidance for cybersecurity professionals 
+              building a credible, recruiter-visible presence.
+            </p>
+          </div>
+          <div class="service-item reveal">
+            <p class="service-item__num">03</p>
+            <p class="service-item__title">Career Guidance</p>
+            <p class="service-item__desc">
+              Honest conversation about breaking into security, navigating the 
+              cert landscape, and building real trajectory — not just credentials.
+            </p>
+          </div>
+        </div>
+        <div style="margin-top:40px;">
+          <p style="font-family:var(--mono);font-size:11px;letter-spacing:0.1em;color:var(--text-muted);">
+            // Interested? Reach out via <a href="mailto:vancemnelson1@gmail.com" style="color:var(--accent-green)">email</a> or <a href="https://linkedin.com/in/vancenelson" style="color:var(--accent-green)">LinkedIn</a>.
+          </p>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container" style="display:flex;justify-content:space-between;width:100%;max-width:var(--max-w);">
+      <span class="footer__copy">© 2025 Vance Nelson</span>
+      <span class="footer__tag">vance-nelson.com</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <!-- Persistent Contact Bar -->
+  <div class="contact-bar" role="complementary" aria-label="Contact">
+    <a href="mailto:vancemnelson1@gmail.com" class="contact-bar__item">
+      <span class="contact-bar__item__label">Email</span>
+      <span>vancemnelson1@gmail.com</span>
+    </a>
+    <div class="contact-bar__divider"></div>
+    <a href="tel:4358810952" class="contact-bar__item">
+      <span class="contact-bar__item__label">Phone</span>
+      <span>435-881-0952</span>
+    </a>
+    <div class="contact-bar__divider"></div>
+    <a href="https://linkedin.com/in/vancenelson" target="_blank" rel="noopener" class="contact-bar__item">
+      <span class="contact-bar__item__label">LinkedIn</span>
+      <span>linkedin.com/in/vancenelson</span>
+    </a>
+  </div>
+</body>
+</html>
