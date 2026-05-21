@@ -26,6 +26,8 @@
   }
 };
 
+   window.addEventListener('resize', updateNav);
+
   // Initialize immediately
   updateNav();
   window.addEventListener('scroll', updateNav, { passive: true });
