@@ -1,38 +1,29 @@
-/* ============================================================
-   vance-nelson.com — Script v3
-   ============================================================ */
-
 (function () {
   'use strict';
 
-  // ── Scroll-aware nav contrast ─────────────────────────────
-  // Hero is bright fog — nav text should be dark over it.
-  // Content sections are charcoal — nav text should be light.
   const nav = document.querySelector('.nav');
   const hero = document.querySelector('.hero');
 
   const updateNav = () => {
-  if (!nav) return;
+    if (!nav) return;
 
-  const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
-  const threshold = nav.offsetHeight + 12;
+    const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+    const threshold = nav.offsetHeight + 12;
 
-  if (heroBottom <= threshold) {
-    nav.classList.remove('nav--light-bg');
-    nav.classList.add('nav--dark-bg');
-  } else {
-    nav.classList.remove('nav--dark-bg');
-    nav.classList.add('nav--light-bg');
-  }
-};
+    if (heroBottom <= threshold) {
+      nav.classList.remove('nav--light-bg');
+      nav.classList.add('nav--dark-bg');
+    } else {
+      nav.classList.remove('nav--dark-bg');
+      nav.classList.add('nav--light-bg');
+    }
+  };
 
-   window.addEventListener('resize', updateNav);
+  window.addEventListener('resize', updateNav);
 
-  // Initialize immediately
   updateNav();
   window.addEventListener('scroll', updateNav, { passive: true });
 
-  // ── Hero image subtle parallax & load state ───────────────
   const heroImg = document.querySelector('.hero__img');
   if (heroImg) {
     window.addEventListener('load', () => {
@@ -46,7 +37,6 @@
     }, { passive: true });
   }
 
-  // ── Scroll reveal ─────────────────────────────────────────
   const revealEls = document.querySelectorAll('.reveal, .exp-item');
   if (revealEls.length) {
     const io = new IntersectionObserver((entries) => {
@@ -66,7 +56,6 @@
     revealEls.forEach(el => io.observe(el));
   }
 
-  // ── Active nav link ───────────────────────────────────────
   const navLinks = document.querySelectorAll('.nav__links a');
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
   navLinks.forEach(link => {
@@ -75,5 +64,4 @@
       link.classList.add('active');
     }
   });
-
 })();
