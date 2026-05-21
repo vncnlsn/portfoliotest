@@ -1,3 +1,7 @@
+/* ============================================================
+   vance-nelson.com — Script v3
+   ============================================================ */
+
 (function () {
   'use strict';
 
@@ -7,33 +11,36 @@
   const updateNav = () => {
     if (!nav) return;
 
-    const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
-    const threshold = nav.offsetHeight + 12;
+    const y = window.scrollY;
+    const enterDark = window.innerHeight * 0.34;
+    const leaveDark = window.innerHeight * 0.22;
 
-    if (heroBottom <= threshold) {
-      nav.classList.remove('nav--light-bg');
+    if (y >= enterDark) {
       nav.classList.add('nav--dark-bg');
-    } else {
-      nav.classList.remove('nav--dark-bg');
+      nav.classList.remove('nav--light-bg');
+    } else if (y <= leaveDark) {
       nav.classList.add('nav--light-bg');
+      nav.classList.remove('nav--dark-bg');
     }
   };
 
-  window.addEventListener('resize', updateNav);
-
   updateNav();
   window.addEventListener('scroll', updateNav, { passive: true });
+  window.addEventListener('resize', updateNav);
 
   const heroImg = document.querySelector('.hero__img');
   if (heroImg) {
     window.addEventListener('load', () => {
       heroImg.classList.add('loaded');
     });
+
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
-      if (y < window.innerHeight) {
-        heroImg.style.transform = `scale(1) translateY(${y * 0.16}px)`;
-      }
+      const maxScroll = window.innerHeight * 0.42;
+      const maxShift = 42;
+      const progress = Math.min(y / maxScroll, 1);
+
+      heroImg.style.transform = `scale(1) translateY(${progress * maxShift}px)`;
     }, { passive: true });
   }
 
