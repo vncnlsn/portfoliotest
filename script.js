@@ -8,26 +8,29 @@
   const nav = document.querySelector('.nav');
   const hero = document.querySelector('.hero');
 
-  const updateNav = () => {
+    const updateNav = () => {
     if (!nav) return;
 
     const y = window.scrollY;
-    const enterDark = window.innerHeight * 0.34;
-    const leaveDark = window.innerHeight * 0.22;
+    const enterFogPanel = window.innerHeight * 0.15;
+    const leaveFogPanel = window.innerHeight * 0.09;
 
-    if (y >= enterDark) {
+    if (y >= enterFogPanel) {
       nav.classList.add('nav--dark-bg');
       nav.classList.remove('nav--light-bg');
-    } else if (y <= leaveDark) {
+    } else if (y <= leaveFogPanel) {
       nav.classList.add('nav--light-bg');
       nav.classList.remove('nav--dark-bg');
     }
   };
 
-  updateNav();
-  window.addEventListener('scroll', updateNav, { passive: true });
   window.addEventListener('resize', updateNav);
 
+  // Initialize immediately
+  updateNav();
+  window.addEventListener('scroll', updateNav, { passive: true });
+
+  // ── Hero image subtle zoom & load state ───────────────
   const heroImg = document.querySelector('.hero__img');
   if (heroImg) {
     window.addEventListener('load', () => {
@@ -36,11 +39,12 @@
 
     window.addEventListener('scroll', () => {
       const y = window.scrollY;
-      const maxScroll = window.innerHeight * 0.42;
-      const maxShift = 42;
+      const maxScroll = window.innerHeight * 0.38;
+      const startScale = 1.06;
+      const endScale = 1.00;
       const progress = Math.min(y / maxScroll, 1);
 
-      heroImg.style.transform = `scale(1) translateY(${progress * maxShift}px)`;
+      heroImg.style.transform = `scale(${startScale - (startScale - endScale) * progress})`;
     }, { passive: true });
   }
 
