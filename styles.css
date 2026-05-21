@@ -60,37 +60,31 @@ img { display: block; max-width: 100%; }
 }
 
 .nav--light-bg {
-  background: transparent;
+  background: rgba(214, 216, 218, 0.04);
+  border-color: transparent;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
 }
 .nav--light-bg .nav__brand,
 .nav--light-bg .nav__links a {
-  color: rgba(10, 12, 15, 0.88);
+  color: rgba(18, 20, 22, 0.84);
 }
 .nav--light-bg .nav__links a::after {
-  background: rgba(10, 12, 15, 0.55);
+  background: rgba(18, 20, 22, 0.5);
 }
 
 .nav--dark-bg {
-  background: rgba(7, 8, 10, 0.92);
-  border-color: var(--accent-line);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(214, 216, 218, 0.22);
+  border-color: rgba(0, 0, 0, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
-.nav--dark-bg .nav__brand {
-  color: rgba(255, 255, 255, 0.92);
-}
+.nav--dark-bg .nav__brand,
 .nav--dark-bg .nav__links a {
-  color: var(--text-secondary);
+  color: rgba(18, 20, 22, 0.88);
 }
-
-.nav__inner {
-  width: 100%;
-  max-width: none;
-  margin: 0;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  gap: 16px;
+.nav--dark-bg .nav__links a::after {
+  background: rgba(18, 20, 22, 0.7);
 }
 
 .nav__brand {
@@ -98,64 +92,13 @@ img { display: block; max-width: 100%; }
   font-size: clamp(12px, 0.9vw, 14px);
   font-weight: 600;
   letter-spacing: 0.12em;
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(18, 20, 22, 0.88);
   white-space: nowrap;
   cursor: default;
   user-select: none;
   transition: color 0.35s ease;
   flex-shrink: 0;
   text-transform: lowercase;
-}
-.nav__brand span { opacity: 0.7; }
-
-.nav__separator {
-  font-family: var(--mono);
-  font-size: clamp(10px, 0.75vw, 12px);
-  color: rgba(255, 255, 255, 0.22);
-  letter-spacing: 0.08em;
-  flex-shrink: 0;
-  user-select: none;
-}
-
-.nav__links {
-  display: flex;
-  gap: clamp(16px, 2vw, 30px);
-  list-style: none;
-  margin-left: 0;
-  flex-wrap: wrap;
-}
-
-.nav__links a {
-  font-family: var(--mono);
-  font-size: clamp(10px, 0.72vw, 12px);
-  font-weight: 400;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  transition: color 0.25s ease;
-  position: relative;
-  padding-bottom: 2px;
-}
-.nav__links a::after {
-  content: '';
-  position: absolute;
-  bottom: 0; left: 0;
-  width: 0; height: 1px;
-  background: var(--accent);
-  transition: width 0.25s ease, background 0.35s ease;
-}
-.nav__links a:hover { color: var(--text-primary); }
-.nav__links a:hover::after,
-.nav__links a.active::after { width: 100%; }
-.nav__links a.active { color: var(--text-primary); }
-
-/* ── Hero ───────────────────────────────────────────────── */
-.hero {
-  position: relative;
-  width: 100%;
-  height: 100vh;
-  min-height: 600px;
-  overflow: hidden;
 }
 
 .hero__img {
@@ -164,48 +107,22 @@ img { display: block; max-width: 100%; }
   background-image: url('images/forest.jpg');
   background-size: cover;
   background-position: center 40%;
-  transform: scale(1.04);
-  transition: transform 8s ease-out;
+  transform: scale(1.06);
+  transform-origin: center center;
+  transition: transform 0.9s ease-out;
+  will-change: transform;
 }
 .hero__img.loaded { transform: scale(1); }
 
-.hero__overlay {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to bottom,
-      rgba(7,8,10,0.28) 0%,
-      rgba(7,8,10,0.08) 25%,
-      rgba(7,8,10,0.35) 60%,
-      rgba(7,8,10,0.80) 80%,
-      rgba(7,8,10,1.00) 100%
-    );
-}
-
-.hero__content {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  padding-top: 18vh;
-  padding-left: 32px;
-  padding-right: 32px;
-  max-width: 860px;
-  margin: 0 auto;
-  width: 100%;
-}
-
 .hero__eyebrow {
   font-family: var(--mono);
-  font-size: clamp(10px, 0.8vw, 12.5px);
-  font-weight: 400;
-  letter-spacing: 0.18em;
+  font-size: clamp(11px, 0.95vw, 13px);
+  font-weight: 500;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(127, 179, 211, 0.92);
+  color: rgba(34, 39, 43, 0.86);
   margin-bottom: 18px;
-  text-shadow: 0 1px 12px rgba(0,0,0,0.45);
+  text-shadow: 0 1px 10px rgba(255, 255, 255, 0.35);
   opacity: 0;
   transform: translateY(12px);
   animation: fadeUp 0.8s ease 0.3s forwards;
