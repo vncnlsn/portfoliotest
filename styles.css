@@ -60,10 +60,10 @@ img { display: block; max-width: 100%; }
 }
 
 .nav--light-bg {
-  background: rgba(214, 216, 218, 0.04);
+  background: transparent;
   border-color: transparent;
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
+  backdrop-filter: blur(0px);
+  -webkit-backdrop-filter: blur(0px);
 }
 .nav--light-bg .nav__brand,
 .nav--light-bg .nav__links a {
@@ -86,7 +86,7 @@ img { display: block; max-width: 100%; }
   color: rgba(255, 255, 255, 0.88);
 }
 .nav--dark-bg .nav__links a::after {
-  background: rgba(127, 179, 211, 0.7);
+  background: rgba(255, 255, 255, 0.45);
 }
 
 .nav__brand {
