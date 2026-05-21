@@ -12,17 +12,19 @@
   const hero = document.querySelector('.hero');
 
   const updateNav = () => {
-    if (!nav) return;
-    const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
-    // Once hero has scrolled away, switch to dark-bg mode
-    if (heroBottom <= 80) {
-      nav.classList.remove('nav--light-bg');
-      nav.classList.add('nav--dark-bg');
-    } else {
-      nav.classList.remove('nav--dark-bg');
-      nav.classList.add('nav--light-bg');
-    }
-  };
+  if (!nav) return;
+
+  const heroBottom = hero ? hero.getBoundingClientRect().bottom : 0;
+  const threshold = nav.offsetHeight + 12;
+
+  if (heroBottom <= threshold) {
+    nav.classList.remove('nav--light-bg');
+    nav.classList.add('nav--dark-bg');
+  } else {
+    nav.classList.remove('nav--dark-bg');
+    nav.classList.add('nav--light-bg');
+  }
+};
 
   // Initialize immediately
   updateNav();
